@@ -6,12 +6,12 @@ This is a sudoku solver, that solves the following sudokus:
 
 The sudoku gives **all** the possible answers to the sudoku (depending on choice).
 
-**Disclaimer** while the program itself can diffrentiate between rectangle sudokus with horizontal and vertical grids and can solve both, since they cant be diffrentiated in the input, only horizontal( which is the most common ) is used
+**Disclaimer** while the program itself can differentiate between rectangle sudokus with horizontal and vertical grids and can solve both, since they cant be differentiated in the input, only horizontal( which is the most common ) is used.
 
 # Input
 You can input the sudokus from the console, or by giving the console a path to a text file with the sudoku.
 
-In case of file input the sudoku determines if a line is a sudoku(see [Determining the input](#determining-the-input))
+In case of file input the sudoku determines if a line is a sudoku(see "determining-the-input") and solves it, or when multiple lines are detected it will solve all of them.
 
 Exiting the program can be done by using (ctrl + c) or (ctrl + z) or the input sapir.
 
@@ -22,20 +22,21 @@ A sudoku is represented by a string, where 0 represents an empty space and every
 # Determining the input
 The program determines wether the input is a file path or a sudoku with the following critiria:
 
-A string is considered a sudoku if all the asci values that are in the string, are in range of values that are allowed in the sudoku +- Diviation(which is 10).
-or in other words, between 0 - diviation to square of length + diviation.
+A string is considered a sudoku if all the asci values that are in the string, are in range of values that are allowed in the sudoku +- Deviation(which is 10).
+or in other words, between 0 - Deviation to square of length + Deviation.
 
 A string is considered a file path if it ends with .txt
 
 otherwise it gives invalid input.
 
 # Output
-----------
+The program outputs solved sudokus in the same format as the input(see "Sudoku input format").
+in cases of files, the sudoku will be printed both in the file the sudoku appears and in the console.
 
 # requirements
 net8.0
 MSTest 3.6.1
 
-# How the algorithem works
+# How the algorithm works
 The sudoku revolves around backtracking and uses hidden groups, pointing groups, and naked singles as heuristics.
 
