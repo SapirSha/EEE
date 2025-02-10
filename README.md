@@ -56,16 +56,21 @@ the index in the array where the position(row and column) appeares represents th
 - This structure is used when guessing, it allowes searching the cell with the least amount of possibilities in Θ(n) time.
 
 2d array of Bitsets called squarePossibilities, where each cell in the array will hold the possibilities for the cell in the same position.
-- This structure is in most of the heuristics, which will be mentioned in the end.
+- This structure is not only used in most heuristics, but is the structure that is used to apply and save those heuristics (i will talk about specific heuristics in the end)
   
 An array of Bitsets called rowAvailability, An array of Bitsets called colAvailability,
 An array of Bitsets called gridAvailability, each holding the possibilities that can be inserted (or were yet to be inserted) in their respected row, column or grid.
 - Theese structures are used in the hidden groups heuristics, which will be mentioned in the end.
 
-A Bitset called full, that is mainly used to initialize the other structures with all thier possibilities.
-- Allowes for faster initialization since it uses bit operations instead of inserting the values one by one.
+And now.. for the diamonds of my program. my application form to why i am better then a 20$ ai:
+3 2d arrays of bitsets called rowAvailabilityCounter, colAvailabilityCounter and gridAvailabilityCounter
+where each row index represents a row, column or grid respectively, and each column index represents every possible value in the sudoku, and the values stored inside the array are the columns, row or positions respectively where they appear in the row, column or grid respectively.
+**Explanation** i will take rowAvailabilityCounter for an example, the row index in the 2d array will represent the same row index in the sudoku, while the column index in the 2d array will represent a value from the values that are possible in the sudoku (e.g for a 9X9 its 1-9). for example, if i will take rowAvailabilityCounter[3, 2] it will give me a BitSet that represents the columns where the value 2(or 3 in reality because index starts at 0) in row 3 appears as a possibility.
+or if i will take rowAvailabilityCounter[3,2] it will give me a BitSet that represents the rows where the value 2(or 3 in reality because index starts at 0) in column 3 appears as a possibility.
+- Theese structures are used in every single line of code, and if they arent, its a mistake. they are used in all heuristics, except for naked singles and minimum possibility insertions. and even more importantly they hint when to check for a possible heuristics.
 
-
+and lastly a stack of Guesses that hold the insertions and possibility removal between guesses.
+- this allows the program to return to before the latest guess.
 
 
 
